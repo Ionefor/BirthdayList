@@ -7,7 +7,7 @@ namespace BirthdayList.Models
     /// </summary>
     public class FriendBirthday : Birthday, IRelation
     {
-        public string RelationShip => "Friend";
+        public static string RelationShip => "Friend";
 
         public override string ToString()
         {

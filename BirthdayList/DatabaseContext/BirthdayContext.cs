@@ -35,7 +35,7 @@ namespace BirthdayList.DatabaseContext
                 );
 
             modelBuilder.Entity<AcquaintanceBirthday>().HasData(
-               new AcquaintanceBirthday { Id = 7, Name = "Dima", DateBirth = new DateTime(2008, 5, 8) },
+               new AcquaintanceBirthday { Id = 7, Name = "Dima", DateBirth = new DateTime(2008, 2, 20) },
                new AcquaintanceBirthday { Id = 8, Name = "Lena", DateBirth = new DateTime(1980, 2, 25) },
                new AcquaintanceBirthday { Id = 9, Name = "Nastya", DateBirth = new DateTime(1998, 12, 31) }
                );

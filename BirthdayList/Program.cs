@@ -9,7 +9,7 @@ namespace BirthdayList
         {
             var currentBirthdays = BirthdayManager.GetCurrentAndUpcomingBirthday();
             Menu.DisplayedCurrentAndUpcomingBirthday();
-            RecordBirthday.DisplayBirthdayRecords(currentBirthdays);
+            RecordBirthday.DisplayBirthdayRecords(currentBirthdays, ConsoleColor.White, true);
             
             while (true)
             {

@@ -5,7 +5,7 @@
     /// </summary>
     public abstract class Birthday
     {
-        public int Id { get; set; }
+        public int Id { get; init; }
         public string? Name { get; set; }
         public DateTime DateBirth { get; set; }
     }

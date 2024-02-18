@@ -15,6 +15,7 @@ namespace BirthdayList.Managers
         repeat:;
 
             List<Birthday> currentBirthdays;
+            List<Birthday> selectedBirthdays;
             string id, name, date;
 
             switch (Console.ReadLine())
@@ -23,7 +24,7 @@ namespace BirthdayList.Managers
 
                     currentBirthdays = BirthdayManager.GetAllBirthday();
                     Menu.DisplayedAllBirthday();
-                    RecordBirthday.DisplayBirthdayRecords(currentBirthdays);
+                    RecordBirthday.DisplayBirthdayRecords(currentBirthdays, ConsoleColor.White, true);
                     AdditionalMenuFirst:;
                     Menu.ShowOptionsAdditionalMenu();
 
@@ -33,24 +34,24 @@ namespace BirthdayList.Managers
                             currentBirthdays = BirthdayManager.Sort(m => m.DateBirth.Month,
                                 d => d.DateBirth.Day, currentBirthdays);
                             Menu.DisplayedAllBirthday();
-                            RecordBirthday.DisplayBirthdayRecords(currentBirthdays);
+                            RecordBirthday.DisplayBirthdayRecords(currentBirthdays, ConsoleColor.White, true);
                             goto AdditionalMenuFirst;
 
                         case "2":
                             currentBirthdays = BirthdayManager.Sort(n => n.Name, currentBirthdays);
                             Menu.DisplayedAllBirthday();
-                            RecordBirthday.DisplayBirthdayRecords(currentBirthdays);
+                            RecordBirthday.DisplayBirthdayRecords(currentBirthdays, ConsoleColor.White, true);
                             goto AdditionalMenuFirst;
 
                         case "3":
-                            currentBirthdays = BirthdayManager.GetPastBirthday();
-                            RecordBirthday.DisplayBirthdayRecords(currentBirthdays, ConsoleColor.Red, true);
+                            selectedBirthdays = BirthdayManager.GetPastBirthday(currentBirthdays);
+                            RecordBirthday.DisplayBirthdayRecords(selectedBirthdays, ConsoleColor.Red, true);
 
-                            currentBirthdays = BirthdayManager.GetCurrentBirthday();
-                            RecordBirthday.DisplayBirthdayRecords(currentBirthdays, ConsoleColor.Green, false);
+                            selectedBirthdays = BirthdayManager.GetCurrentBirthday(currentBirthdays);
+                            RecordBirthday.DisplayBirthdayRecords(selectedBirthdays, ConsoleColor.Green, false);
 
-                            currentBirthdays = BirthdayManager.GetUpcomingBirthday();
-                            RecordBirthday.DisplayBirthdayRecords(currentBirthdays, ConsoleColor.Yellow, false);
+                            selectedBirthdays = BirthdayManager.GetUpcomingBirthday(currentBirthdays);
+                            RecordBirthday.DisplayBirthdayRecords(selectedBirthdays, ConsoleColor.Yellow, false);
                             Menu.DisplayedBirthdayColors();
                             goto AdditionalMenuFirst;
 
@@ -62,7 +63,7 @@ namespace BirthdayList.Managers
                     }
                 case "2":
                     currentBirthdays = BirthdayManager.GetCurrentAndUpcomingBirthday();
-                    RecordBirthday.DisplayBirthdayRecords(currentBirthdays);
+                    RecordBirthday.DisplayBirthdayRecords(currentBirthdays, ConsoleColor.White, true);
                     Menu.DisplayedCurrentAndUpcomingBirthday();
                 AdditionalMenuSecond:;
                     Menu.ShowOptionsAdditionalMenu();
@@ -72,25 +73,25 @@ namespace BirthdayList.Managers
                         case "1":
                             currentBirthdays = BirthdayManager.Sort(m => m.DateBirth.Month,
                                 d => d.DateBirth.Day, currentBirthdays);
-                            RecordBirthday.DisplayBirthdayRecords(currentBirthdays);
+                            RecordBirthday.DisplayBirthdayRecords(currentBirthdays, ConsoleColor.White, true);
                             Menu.DisplayedCurrentAndUpcomingBirthday();
                             goto AdditionalMenuSecond;
 
                         case "2":
                             currentBirthdays = BirthdayManager.Sort(n => n.Name, currentBirthdays);
-                            RecordBirthday.DisplayBirthdayRecords(currentBirthdays);
+                            RecordBirthday.DisplayBirthdayRecords(currentBirthdays, ConsoleColor.White, true);
                             Menu.DisplayedCurrentAndUpcomingBirthday();
                             goto AdditionalMenuSecond;
 
                         case "3":
-                            currentBirthdays = BirthdayManager.GetPastBirthday();
-                            RecordBirthday.DisplayBirthdayRecords(currentBirthdays, ConsoleColor.Red, true);
+                            selectedBirthdays = BirthdayManager.GetPastBirthday(currentBirthdays);
+                            RecordBirthday.DisplayBirthdayRecords(selectedBirthdays, ConsoleColor.Red, true);
 
-                            currentBirthdays = BirthdayManager.GetCurrentBirthday();
-                            RecordBirthday.DisplayBirthdayRecords(currentBirthdays, ConsoleColor.Green, false);
+                            selectedBirthdays = BirthdayManager.GetCurrentBirthday(currentBirthdays);
+                            RecordBirthday.DisplayBirthdayRecords(selectedBirthdays, ConsoleColor.Green, false);
 
-                            currentBirthdays = BirthdayManager.GetUpcomingBirthday();
-                            RecordBirthday.DisplayBirthdayRecords(currentBirthdays, ConsoleColor.Yellow, false);
+                            selectedBirthdays = BirthdayManager.GetUpcomingBirthday(currentBirthdays);
+                            RecordBirthday.DisplayBirthdayRecords(selectedBirthdays, ConsoleColor.Yellow, false);
                             Menu.DisplayedBirthdayColors();
                             goto AdditionalMenuSecond;
 

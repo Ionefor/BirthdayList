@@ -7,16 +7,6 @@ namespace BirthdayList.Views
     /// </summary>
     public static class RecordBirthday
     {
-        public static void DisplayBirthdayRecords(List<Birthday> birthdays)
-        {
-            Console.WriteLine();
-            Console.WriteLine(" {0, -1} |  {1, -8} | {2} | {3}", "id", "Name", "Date ", "Relation");
-
-            foreach (var birthday in birthdays)
-            {
-                Console.WriteLine(birthday);
-            }
-        }
         public static void DisplayBirthdayRecords(List<Birthday> birthdays, ConsoleColor color, bool enableHeadlines)
         {
             if(enableHeadlines)

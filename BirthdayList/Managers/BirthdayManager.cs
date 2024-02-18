@@ -12,8 +12,8 @@ namespace BirthdayList.Managers
         {
             using (var context = new BirthdayContext())
             {
-                return context.birthdays.Where(b => b.DateBirth.Day == DateTime.Now.Day ||
-                                b.DateBirth.Month == DateTime.Now.Month && b.DateBirth.Day >= DateTime.Now.Day).ToList();
+                return context.birthdays.Where(b => b.DateBirth.Month == DateTime.Now.Month 
+                                            && b.DateBirth.Day >= DateTime.Now.Day).ToList();
             }
         }
         public static List<Birthday> GetAllBirthday()
@@ -23,28 +23,19 @@ namespace BirthdayList.Managers
                 return context.birthdays.ToList();
             }
         }
-        public static List<Birthday> GetPastBirthday()
+        public static List<Birthday> GetPastBirthday(List<Birthday> birthdays)
         {
-            using (var context = new BirthdayContext())
-            {
-                return context.birthdays.Where(b => (b.DateBirth.Month > 0 && b.DateBirth.Month < DateTime.Now.Month)
-                    || b.DateBirth.Month == DateTime.Now.Month && b.DateBirth.Day < DateTime.Now.Day).ToList();
-            }
+            return birthdays.Where(b => b.DateBirth.Month < DateTime.Now.Month
+                        || b.DateBirth.Month == DateTime.Now.Month && b.DateBirth.Day < DateTime.Now.Day).ToList();
         }
-        public static List<Birthday> GetCurrentBirthday()
+        public static List<Birthday> GetCurrentBirthday(List<Birthday> birthdays)
         {
-            using (var context = new BirthdayContext())
-            {
-                return context.birthdays.Where(b => b.DateBirth == DateTime.Now.Date).ToList();
-            }
+            return birthdays.Where(b => b.DateBirth == DateTime.Now.Date).ToList();
         }
-        public static List<Birthday> GetUpcomingBirthday()
+        public static List<Birthday> GetUpcomingBirthday(List<Birthday> birthdays)
         {
-            using (var context = new BirthdayContext())
-            {
-                return context.birthdays.Where(b => (b.DateBirth.Month > DateTime.Now.Month && b.DateBirth.Month <= 12)
-                || (b.DateBirth.Month == DateTime.Now.Month && b.DateBirth.Day > DateTime.Now.Day)).ToList();
-            }
+            return birthdays.Where(b => b.DateBirth.Month > DateTime.Now.Month
+                    || (b.DateBirth.Month == DateTime.Now.Month && b.DateBirth.Day > DateTime.Now.Day)).ToList();
         }
         public static bool AddBirthday(string name, string date, int choiceRelation)
         {

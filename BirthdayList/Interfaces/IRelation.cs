@@ -5,6 +5,6 @@
     /// </summary>
     public interface IRelation
     {
-        string RelationShip { get; }
+        static string? RelationShip { get; }
     }
 }
